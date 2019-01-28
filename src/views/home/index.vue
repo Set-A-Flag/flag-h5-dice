@@ -50,14 +50,13 @@ export default {
       }
     }
     .footButton {
-      // position: fixed;
-      // bottom: 50px;
       display: flex;
       justify-content: center;
-      width: 100%;
+      width: 80%;
+      margin: 0 auto;
       .buttonItem {
         img {
-          width: 50%;
+          width: 60%;
         }
       }
     }
