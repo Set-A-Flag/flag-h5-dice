@@ -1,13 +1,13 @@
 <template>
-  <div class="home">
-    首页
+  <div class="ranking">
+    排行
   </div>
 </template>
 
 <script>
 
 export default {
-  name: 'home'
+  name: 'ranking'
   
 }
 </script>

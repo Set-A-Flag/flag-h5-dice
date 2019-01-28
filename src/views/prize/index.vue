@@ -1,13 +1,13 @@
 <template>
-  <div class="home">
-    首页
+  <div class="prize">
+    我的奖品
   </div>
 </template>
 
 <script>
 
 export default {
-  name: 'home'
+  name: 'prize'
   
 }
 </script>
