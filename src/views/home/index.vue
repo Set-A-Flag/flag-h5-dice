@@ -50,30 +50,30 @@ export default {
     width: 100%;
     height: 100%;
     .title {
-      margin-top: 2rem;
+      margin-top: 1rem;
       img {
-        width: 80%;
+        width: 8.43rem;
       }
     }
     .guomeimei {
       img {
-        width: 50%;
+        width: 5.43rem;
       }
     }
     .startBtn {
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
       img {
-        width: 70%;
+        width: 6.52rem;
       }
     }
     .footButton {
       display: flex;
       justify-content: center;
-      width: 80%;
       margin: 0 auto;
       .buttonItem {
         img {
-          width: 60%;
+          margin: 0 0.5rem;
+          width: 2.07rem;
         }
       }
     }
