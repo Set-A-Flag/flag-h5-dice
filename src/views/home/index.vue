@@ -14,20 +14,16 @@
       <div @click="prizeButtonClick" class="buttonItem"><img src="@/assets/home/myPrizes.png"></div>
       <div class="buttonItem"><img src="@/assets/home/nationalRankings.png"></div>
     </div>
-    <Dialog :visible.sync="myPrizeDialogVisible">
-      <prize slot="body"/>
-    </Dialog>
+    <prize ref="prize"/>
   </div>
 </template>
 
 <script>
-import Dialog from '@/components/Dialog'
 import prize from './../prize'
 
 export default {
   name: 'home',
   components: {
-    Dialog,
     prize
   },
   data () {
@@ -40,7 +36,7 @@ export default {
       this.$router.push('/play')
     },
     prizeButtonClick () {
-      this.myPrizeDialogVisible = true
+      this.$refs.prize.visible = true
     }
   }
 }
