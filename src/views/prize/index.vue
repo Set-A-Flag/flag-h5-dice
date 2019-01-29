@@ -25,7 +25,7 @@ const TITLE_MAP = {
   'isShowPrizeList': '/static/images/prize/myAddresTitle.png',
   'isShowQrCode': '/static/images/prize/PrizesQRcodeTitle.png',
   'isShowFacialMask': '/static/images/prize/myAddresTitle.png',
-  'isShowReceiveInfo': '/static/images/prize/myAddresTitle.png',
+  'isShowReceiveInfo': '/static/images/prize/myAddresTitle.png'
 }
 
 export default {
