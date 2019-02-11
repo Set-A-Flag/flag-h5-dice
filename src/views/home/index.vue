@@ -10,21 +10,24 @@
       <img src="@/assets/home/startBtn.png">
     </div>
     <div class="footButton">
-      <div class="buttonItem"><img src="@/assets/home/gameDescription.png"></div>
+      <div @click="aboutButtonClick" class="buttonItem"><img src="@/assets/home/gameDescription.png"></div>
       <div @click="prizeButtonClick" class="buttonItem"><img src="@/assets/home/myPrizes.png"></div>
       <div class="buttonItem"><img src="@/assets/home/nationalRankings.png"></div>
     </div>
     <prize ref="prize"/>
+    <about ref="about"/>
   </div>
 </template>
 
 <script>
-import prize from './../prize'
+import prize from '@/views/prize'
+import about from '@/views/about'
 
 export default {
   name: 'home',
   components: {
-    prize
+    prize,
+    about
   },
   data () {
     return {
@@ -37,6 +40,9 @@ export default {
     },
     prizeButtonClick () {
       this.$refs.prize.visible = true
+    },
+    aboutButtonClick () {
+      this.$refs.about.visible = true
     }
   }
 }

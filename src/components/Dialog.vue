@@ -8,6 +8,9 @@
       <slot name="body">
         Body
       </slot>
+      <div v-if="hasSureButton" class="dice-dialog-sureButton">
+        <img src="@/assets/components/dialog/isOkBtn.png" @click="sureButtonClick">
+      </div>
     </div>
     <div class="dice-dialog-bottom"></div>
     <Cover/>
@@ -25,6 +28,10 @@ export default {
     visible: {
       type: Boolean,
       default: false
+    },
+    hasSureButton: {
+      type: Boolean,
+      default: false
     }
   },
   components: {
@@ -33,6 +40,9 @@ export default {
   methods: {
     close () {
       this.$emit('update:visible', false)
+    },
+    sureButtonClick () {
+      this.$emit('sureCallBack')
     }
   }
 }
@@ -71,8 +81,18 @@ export default {
     background-image: url('./../assets/components/dialog/borderBody.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    padding: 10px .5rem 0;
+  }
+  .dice-dialog-sureButton {
+    margin-top: 15px;
+    img {
+      width: 2.7rem;
+    }
   }
   .dice-dialog-bottom {
+    // 解决会出现缝隙的问题 不知道什么原因
+    position: relative;
+    top: -2px;
     background-image: url('./../assets/components/dialog/borderBottom.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
