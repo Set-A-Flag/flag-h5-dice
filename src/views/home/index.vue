@@ -12,22 +12,25 @@
     <div class="footButton">
       <div @click="aboutButtonClick" class="buttonItem"><img src="@/assets/home/gameDescription.png"></div>
       <div @click="prizeButtonClick" class="buttonItem"><img src="@/assets/home/myPrizes.png"></div>
-      <div class="buttonItem"><img src="@/assets/home/nationalRankings.png"></div>
+      <div @click="rankButtonClick" class="buttonItem"><img src="@/assets/home/nationalRankings.png"></div>
     </div>
     <prize ref="prize"/>
     <about ref="about"/>
+    <ranking ref="ranking"/>
   </div>
 </template>
 
 <script>
 import prize from '@/views/prize'
 import about from '@/views/about'
+import ranking from '@/views/ranking'
 
 export default {
   name: 'home',
   components: {
     prize,
-    about
+    about,
+    ranking
   },
   data () {
     return {
@@ -43,6 +46,9 @@ export default {
     },
     aboutButtonClick () {
       this.$refs.about.visible = true
+    },
+    rankButtonClick () {
+      this.$refs.ranking.visible = true
     }
   }
 }
@@ -52,7 +58,7 @@ export default {
     width: 100%;
     height: 100%;
     .title {
-      margin-top: 1rem;
+      margin-top: 20px;
       img {
         width: 8.43rem;
       }
@@ -63,7 +69,7 @@ export default {
       }
     }
     .startBtn {
-      margin-bottom: 1rem;
+      margin-bottom: 10px;
       img {
         width: 6.52rem;
       }
