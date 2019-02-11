@@ -49,6 +49,7 @@ export default {
 </script>
 
 <style lang="less">
+@import '../style/dialog.less';
 .dice-dialog {
   width: 100%;
   height: 100%;
