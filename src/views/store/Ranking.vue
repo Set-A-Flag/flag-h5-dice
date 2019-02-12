@@ -1,5 +1,5 @@
 <template>
-  
+  <div>全国店主排名</div>  
 </template>
 
 <script>

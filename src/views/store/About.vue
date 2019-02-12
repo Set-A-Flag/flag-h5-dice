@@ -1,5 +1,5 @@
 <template>
-  
+  <div>活动介绍</div>
 </template>
 
 <script>

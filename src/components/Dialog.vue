@@ -51,12 +51,12 @@ export default {
 <style lang="less">
 @import '../style/dialog.less';
 .dice-dialog {
-  width: 100%;
+  width: 10rem;
   height: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  padding: 15% 10%;
+  padding: 1.5rem 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -64,18 +64,18 @@ export default {
     background-image: url('./../assets/components/dialog/borderTop.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    height: 40px;
+    height: .53rem;
     position: relative;
     .dialog-title {
-      height: 55px;
-      margin-top: -20px;
+      height: 1.4rem;
+      margin-top: -.8rem;
     }
     .dialog-close-btn {
       position: absolute;
-      width: 40px;
-      height: 40px;
-      top: -10px;
-      right: -10px;
+      width: 1rem;
+      height: 1rem;
+      top: -.5rem;
+      right: -.2rem;
     }
   }
   .dice-dialog-body {
@@ -83,6 +83,7 @@ export default {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     padding: 10px .5rem 0;
+    margin: -1px 0;
   }
   .dice-dialog-sureButton {
     margin-top: 15px;
@@ -92,8 +93,6 @@ export default {
   }
   .dice-dialog-bottom {
     // 解决会出现缝隙的问题 不知道什么原因
-    position: relative;
-    top: -2px;
     background-image: url('./../assets/components/dialog/borderBottom.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;

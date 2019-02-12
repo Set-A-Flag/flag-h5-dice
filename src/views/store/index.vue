@@ -49,20 +49,12 @@ export default {
       aboutVisible: false,
       codeVisible: false,
       rankingVisible: false,
-      prizeCheckVisible: false,
+      prizeCheckVisible: false
     }
   },
   methods: {
     showDialog (visible) {
       this[visible] = true
-    },
-    getCurrentTitle () {
-      const _this = this
-      let titleImg = ''
-      Object.keys(_this.showControl).forEach(state => {
-        _this.showControl[state] && (titleImg = TITLE_MAP[state])
-      })
-      return titleImg
     }
   }
 }

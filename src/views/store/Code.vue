@@ -1,5 +1,5 @@
 <template>
-  
+  <div>推广二维码</div>  
 </template>
 
 <script>
