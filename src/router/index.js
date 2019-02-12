@@ -23,6 +23,15 @@ export default new Router({
       component: () => import(/* webpackChunkName: "application" */ './../views/application/index.vue')
     },
     {
+      // 商家主页
+      path: '/store',
+      name: 'store',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "store" */ './../views/store/index.vue')
+    },
+    {
       // 游戏
       path: '/play',
       name: 'play',
