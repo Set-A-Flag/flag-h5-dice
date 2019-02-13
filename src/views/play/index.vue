@@ -190,9 +190,9 @@ export default {
       // box-sizing: border-box;
       .monkey{
         position: absolute;
-        width: 1.83rem;
-        height: 20%;
-        background-size: 85%!important;  
+        width: 1.65rem;
+        height: 1.65rem;
+        background-size: 90% !important; 
         -webkit-transition-property:top,left;
         -webkit-transition-duration:0.5s;
         left:calc(1.83rem + 0.43rem);   
