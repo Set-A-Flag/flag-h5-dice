@@ -66,11 +66,16 @@
     }
 
     function refreshRem(){
+        // debugger
         var width = docEl.getBoundingClientRect().width;
+        var phontHeight = screen.height; // 手机屏幕总高度
+        var height = docEl.clientHeight; // 手机视窗高度
+        // alert(phontHeight);
         if (width / dpr > 540) {
             width = 540 * dpr;
         }
-        var rem = width / 10;
+        // var rem = width / 10;
+        var rem = (width * (height / phontHeight)) / 10;
         docEl.style.fontSize = rem + 'px';
         flexible.rem = win.rem = rem;
     }
