@@ -38,7 +38,7 @@ export default {
       this.game.random = Math.floor(Math.random()* 6+1)
       this.moveByNum(this.game.random-1)
     },
-    // 递归执行猴子行动
+    // 递归执行猴子行动 ceshipush
     moveByNum(num){
       if(num>-1){
         this.monkeyMove()
