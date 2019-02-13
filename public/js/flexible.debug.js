@@ -70,11 +70,10 @@
         var width = docEl.getBoundingClientRect().width;
         var phontHeight = screen.height; // 手机屏幕总高度
         var height = docEl.clientHeight; // 手机视窗高度
-        
-        // 战略性去掉
-        // if (width / dpr > 540) {
-        //     width = 540 * dpr;
-        // }
+
+        if (width / dpr > 540) {
+            width = 540 * dpr;
+        }
 
         // var rem = width / 10;
         var rem = (width * (height / phontHeight)) / 10;
