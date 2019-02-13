@@ -52,6 +52,7 @@ export default {
           this.moveByNum(num)
         },600)
       }else{
+        // 最后一次移动
         this.monkeyMove(true)
       }
       
