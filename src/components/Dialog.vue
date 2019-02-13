@@ -84,7 +84,7 @@ export default {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     padding: 10px .5rem 0;
-    margin: -1px 0;
+    margin: -2px 0;
   }
   .dice-dialog-sureButton {
     margin-top: 15px;

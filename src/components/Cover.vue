@@ -8,7 +8,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .dice-cover {
   width: 100vw;
   height: 100vh;

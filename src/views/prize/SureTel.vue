@@ -18,13 +18,13 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .tel-info {
   text-align: left;
   text-indent: 2em;
   margin: 0 2em;
   font-weight: bold;
-  font-size: 12px;
+  font-size: .35rem;
   margin-top: 10px;
   color: #e08233;
 }
