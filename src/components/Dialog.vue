@@ -52,11 +52,11 @@ export default {
 <style lang="less">
 @import '../style/dialog.less';
 .dice-dialog {
-  width: 100%;
+  width: 10rem;
   height: 100%;
   position: fixed;
   top: 0;
-  left: 0;
+  left: calc((100% - 10rem) / 2);
   padding: 1.5rem 1rem;
   display: flex;
   flex-direction: column;
@@ -85,6 +85,8 @@ export default {
     background-size: 100% 100%;
     padding: 10px .5rem 0;
     margin: -2px 0;
+    max-height: calc(100% - 1.06rem);
+    overflow: auto;
   }
   .dice-dialog-sureButton {
     margin-top: 15px;
