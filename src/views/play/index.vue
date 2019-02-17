@@ -11,7 +11,12 @@
         <!-- 移动的猴子 -->
       </div>
     </div>
-    <button @click="changePosition">测试</button><span>{{game.random}}</span>
+    <!-- <button @click="changePosition">测试</button><span>{{game.random}}</span> -->
+    <div class="gameFooter">
+      <div class="goBtn">
+        <img src="/static/game/goBtn.png" alt="">
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -200,7 +205,18 @@ export default {
       }
       
     }
-    
+    .gameFooter {
+      .sezi {
+        
+      }
+      .goBtn {
+        float: right;
+        margin-right: 1rem;
+        img {
+          width: 2.8rem;
+        }
+      }
+    }
   }
 </style>
 

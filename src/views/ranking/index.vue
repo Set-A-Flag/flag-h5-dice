@@ -201,6 +201,22 @@ export default {
       {
         date: '10-15',
         score: '100'
+      },
+      {
+        date: '10-15',
+        score: '100'
+      },
+      {
+        date: '10-15',
+        score: '100'
+      },
+      {
+        date: '10-15',
+        score: '100'
+      },
+      {
+        date: '10-15',
+        score: '100'
       }
     ]
   },
@@ -234,7 +250,6 @@ export default {
         position: absolute;
         right: 5px;
         top: 5px;
-        
       }
       .myScoreImg {
         margin-left: 5px;
@@ -264,7 +279,7 @@ export default {
         }
       }
       .content {
-        max-height: 5rem;
+        max-height: 7rem;
         overflow-y: auto;
         .rowItem {
           display: flex;

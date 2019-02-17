@@ -47,6 +47,9 @@
             <span class="fcontent">报名第三届1025果本爱我节，拿专项政策扶贫，更有H5手游引流、大抽奖等劲爆活动等着你！</span>
         </div>
     </div>
+    <div class="buttonFooter">
+      <img src="@/assets/components/dialog/isOkBtn.png" @click="sureButtonClick">
+    </div>
   </div>
 </template>
 <script>
@@ -81,6 +84,11 @@ export default {
         citySelect() {
             this.countySelect = ''
         }
+    },
+    methods: {
+        sureButtonClick() {
+
+        }
     }
 }
 </script>
@@ -88,7 +96,7 @@ export default {
 <style lang="less" scoped>
 .application {
     .content {
-        margin: 5rem auto 0;
+        margin: 2rem auto 0;
         padding: 1rem .5rem .5rem;
         width: 8rem;
         border: 2px solid #B0D27F;
@@ -139,6 +147,12 @@ export default {
             .fcontent {
                 font-size: 8px;
             }
+        }
+    }
+    .buttonFooter {
+        margin: 1rem 0 0;
+        img {
+            width: 2.71rem;
         }
     }
 }
