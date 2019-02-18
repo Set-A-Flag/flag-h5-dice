@@ -9,6 +9,10 @@
       <!-- 游戏内容 -->
       <div class="monkey" :style="game.monkeyStyle">
         <!-- 移动的猴子 -->
+        <img v-if="game.monkeyImg==1" src="/static/game/player1.png" alt="">
+        <img v-if="game.monkeyImg==2" src="/static/game/player2.png" alt="">
+        <img v-if="game.monkeyImg==3" src="/static/game/player3.png" alt="">
+        <img v-if="game.monkeyImg==4" src="/static/game/player4.png" alt="">
       </div>
       <div class="sezi">
         <img v-if="game.seziImgIndex==1&&game.random==0" src="/static/sezi/骰子_00001.png" alt="">
@@ -57,11 +61,12 @@ export default {
       },
       game:{
         monkeyStyle:{
-          background:'url(/static/game/player4.png) no-repeat center top',
+          
           // left:'0.43rem',
           left:'0',
           top:'0'
         },
+        monkeyImg:4,
         random:0,//骰子随机数
         monkeySiteNum:0,
         seziImgIndex:0
@@ -100,7 +105,10 @@ export default {
       }else{
         // 最后一次移动
         this.monkeyMove(true)
-        this.btnModalShow = false
+        setTimeout(()=>{
+          this.btnModalShow = false
+          this.game.random = 0
+        },600)
       }
       
     },
@@ -128,21 +136,23 @@ export default {
           this.game.monkeyStyle.left = (128 + 10) * 3 / 75 + 'rem'
           this.game.monkeyStyle.top = 0
           this.$nextTick(()=>{
-            this.game.monkeyStyle.background='url(/static/game/player1.png) no-repeat center top'
+            this.game.monkeyImg = 1
           })
           break
         case 4:
           this.game.monkeyStyle.left = (128 + 10) * 3 / 75 + 'rem'
           this.game.monkeyStyle.top = (128 + 12) / 75 +'rem'
           this.$nextTick(()=>{
-            this.game.monkeyStyle.background='url(/static/game/player4.png) no-repeat center top'
+            this.game.monkeyImg = 4
+            // this.game.monkeyStyle.background='url(/static/game/player4.png) no-repeat center top'
           })
           break
         case 5:
           this.game.monkeyStyle.left = (128 + 10) * 4 / 75 + 'rem'
           this.game.monkeyStyle.top = (128 + 12) / 75 +'rem'
           this.$nextTick(()=>{
-            this.game.monkeyStyle.background='url(/static/game/player1.png) no-repeat center top'
+            this.game.monkeyImg = 1
+            // this.game.monkeyStyle.background='url(/static/game/player1.png) no-repeat center top'
           })
           break
         case 6:
@@ -153,7 +163,8 @@ export default {
           this.game.monkeyStyle.left = (128 + 10) * 4 / 75 + 'rem'
           this.game.monkeyStyle.top = (128 + 12) * 3 / 75 +'rem'
           this.$nextTick(()=>{
-            this.game.monkeyStyle.background='url(/static/game/player2.png) no-repeat center top'
+            this.game.monkeyImg = 2
+            // this.game.monkeyStyle.background='url(/static/game/player2.png) no-repeat center top'
           })
           break
         case 8:
@@ -164,14 +175,16 @@ export default {
           this.game.monkeyStyle.left = (128 + 10) * 2 / 75 + 'rem'
           this.game.monkeyStyle.top = (128 + 12) * 3 / 75 +'rem'
           this.$nextTick(()=>{
-            this.game.monkeyStyle.background='url(/static/game/player1.png) no-repeat center top'
+            this.game.monkeyImg = 1
+            // this.game.monkeyStyle.background='url(/static/game/player1.png) no-repeat center top'
           })
           break
         case 10:
           this.game.monkeyStyle.left = (128 + 10) * 2 / 75 + 'rem'
           this.game.monkeyStyle.top = (128 + 12) * 4 / 75 +'rem'
           this.$nextTick(()=>{
-            this.game.monkeyStyle.background='url(/static/game/player2.png) no-repeat center top'
+            this.game.monkeyImg = 2
+            // this.game.monkeyStyle.background='url(/static/game/player2.png) no-repeat center top'
           })
           break
         case 11:
@@ -182,7 +195,8 @@ export default {
           this.game.monkeyStyle.left = 0
           this.game.monkeyStyle.top = (128 + 12) * 4 / 75 +'rem'
           this.$nextTick(()=>{
-            this.game.monkeyStyle.background='url(/static/game/player3.png) no-repeat center top'
+            this.game.monkeyImg = 3
+            // this.game.monkeyStyle.background='url(/static/game/player3.png) no-repeat center top'
           })
           break
         case 13:
@@ -201,7 +215,8 @@ export default {
           this.game.monkeyStyle.left = 0
           this.game.monkeyStyle.top = 0
           this.$nextTick(()=>{
-            this.game.monkeyStyle.background='url(/static/game/player4.png) no-repeat center top'
+            this.game.monkeyImg = 4
+            // this.game.monkeyStyle.background='url(/static/game/player4.png) no-repeat center top'
           })
           break                
         default:
@@ -255,7 +270,15 @@ export default {
         background-size: 90% !important; 
         -webkit-transition-property:top,left;
         -webkit-transition-duration:0.5s;
-        left:calc(1.83rem + 0.43rem);   
+        left:calc(1.83rem + 0.43rem);
+        img{
+          width: 90%;
+          height: 90%;
+          position: absolute;
+          top:50%; 
+          left:50%;
+          transform: translate(-50%,-50%);
+        }   
       }
       
     }
