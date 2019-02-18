@@ -10,11 +10,39 @@
       <div class="monkey" :style="game.monkeyStyle">
         <!-- 移动的猴子 -->
       </div>
+      <div class="sezi">
+        <img v-if="game.seziImgIndex==1&&game.random==0" src="/static/sezi/骰子_00001.png" alt="">
+        <img v-if="game.seziImgIndex==2&&game.random==0" src="/static/sezi/骰子_00002.png" alt="">
+        <img v-if="game.seziImgIndex==3&&game.random==0" src="/static/sezi/骰子_00003.png" alt="">
+        <img v-if="game.seziImgIndex==4&&game.random==0" src="/static/sezi/骰子_00004.png" alt="">
+        <img v-if="game.seziImgIndex==5&&game.random==0" src="/static/sezi/骰子_00005.png" alt="">
+        <img v-if="game.seziImgIndex==6&&game.random==0" src="/static/sezi/骰子_00006.png" alt="">
+        <img v-if="game.seziImgIndex==7&&game.random==0" src="/static/sezi/骰子_00007.png" alt="">
+        <img v-if="game.seziImgIndex==8&&game.random==0" src="/static/sezi/骰子_00008.png" alt="">
+        <img v-if="game.seziImgIndex==9&&game.random==0" src="/static/sezi/骰子_00009.png" alt="">
+        <img v-if="game.seziImgIndex==10&&game.random==0" src="/static/sezi/骰子_00010.png" alt="">
+        <img v-if="game.seziImgIndex==11&&game.random==0" src="/static/sezi/骰子_00011.png" alt="">
+        <img v-if="game.seziImgIndex==12&&game.random==0" src="/static/sezi/骰子_00012.png" alt="">
+        <img v-if="game.seziImgIndex==13&&game.random==0" src="/static/sezi/骰子_00013.png" alt="">
+        <img v-if="game.seziImgIndex==14&&game.random==0" src="/static/sezi/骰子_00014.png" alt="">
+        <img v-if="game.seziImgIndex==15&&game.random==0" src="/static/sezi/骰子_00015.png" alt="">
+        <img v-if="game.seziImgIndex==16&&game.random==0" src="/static/sezi/骰子_00016.png" alt="">
+        <img v-if="game.seziImgIndex==17&&game.random==0" src="/static/sezi/骰子_00017.png" alt="">
+        <img v-if="game.seziImgIndex==18&&game.random==0" src="/static/sezi/骰子_00018.png" alt="">
+        <img v-if="game.seziImgIndex==19&&game.random==0" src="/static/sezi/骰子_00019.png" alt="">
+        <img v-if="game.random==1&&game.seziImgIndex==0" src="/static/sezi/骰子_00032.png" alt="">
+        <img v-if="game.random==2&&game.seziImgIndex==0" src="/static/sezi/骰子_00033.png" alt="">
+        <img v-if="game.random==3&&game.seziImgIndex==0" src="/static/sezi/骰子_00034.png" alt="">
+        <img v-if="game.random==4&&game.seziImgIndex==0" src="/static/sezi/骰子_00035.png" alt="">
+        <img v-if="game.random==5&&game.seziImgIndex==0" src="/static/sezi/骰子_00036.png" alt="">
+        <img v-if="game.random==6&&game.seziImgIndex==0" src="/static/sezi/骰子_00037.png" alt="">
+      </div>
     </div>
     <!-- <button @click="changePosition">测试</button><span>{{game.random}}</span> -->
     <div class="gameFooter">
       <div class="goBtn">
-        <img src="/static/game/goBtn.png" alt="">
+        <img src="/static/game/goBtn.png" @click="getRandom(19)" alt="">
+        <div v-if="btnModalShow" class="modal"></div>
       </div>
     </div>
   </div>
@@ -23,8 +51,9 @@
 export default {
   data(){
     return{
+      btnModalShow:false,//按钮遮罩
       point:{
-        value:109
+        value:100
       },
       game:{
         monkeyStyle:{
@@ -34,14 +63,26 @@ export default {
           top:'0'
         },
         random:0,//骰子随机数
-        monkeySiteNum:0
+        monkeySiteNum:0,
+        seziImgIndex:0
       }
     }
   },
   methods:{
-    changePosition(){
-      this.game.random = Math.floor(Math.random()* 6+1)
-      this.moveByNum(this.game.random-1)
+    getRandom(num){
+      this.btnModalShow = true
+      this.game.random = 0
+      if(num>0){
+        num = num -1
+        this.game.seziImgIndex = 19-num
+        setTimeout(()=>{
+          this.getRandom(num)
+        },100)
+      }else{
+        this.game.seziImgIndex = 0
+        this.game.random = Math.floor(Math.random()* 6+1)
+        this.moveByNum(this.game.random-1)
+      }
     },
     // 递归执行猴子行动 ceshipush
     moveByNum(num){
@@ -59,6 +100,7 @@ export default {
       }else{
         // 最后一次移动
         this.monkeyMove(true)
+        this.btnModalShow = false
       }
       
     },
@@ -183,6 +225,7 @@ export default {
       background: url(/static/game/scoreTitle.png) no-repeat center top;
       background-size:453/75rem 183/75rem;
       font-family: sans-serif;
+      color: #7d3d00;
     }
     .gameContent{
       // width: 100%;
@@ -192,6 +235,17 @@ export default {
       height: 687/75rem;
       background: url(/static/game/guidao.png) no-repeat center top;
       background-size:685/75rem 687/75rem;
+      .sezi{
+        position: absolute;
+        width: 300/75rem;
+        height: 650/75rem;
+        left: 2.565rem;
+        top: -2.5rem;
+        img{
+          width: 100%;
+          height: 100%;
+        }
+      }
       // padding:0 0.43rem;
       // box-sizing: border-box;
       .monkey{
@@ -212,8 +266,19 @@ export default {
       .goBtn {
         float: right;
         margin-right: 1rem;
+        position: relative;
         img {
           width: 2.8rem;
+        }
+        .modal{
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          z-index: 100;
+          top: 0;
+          right: 0;
+          left: 0;
+          bottom: 0;
         }
       }
     }
