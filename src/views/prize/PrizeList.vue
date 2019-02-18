@@ -1,10 +1,10 @@
 <template>
   <div>
-      <img @click="prizeClick('code')" class="prize-item" src="@/assets/user/myPrizes3.png" alt="">
+      <img @click="prizeClick('qrCodeVisible')" class="prize-item" src="@/assets/user/myPrizes3.png" alt="">
 
-      <img @click="prizeClick('receive')" class="prize-item" src="@/assets/user/myPrizes2.png" alt="">
+      <img @click="prizeClick('receiveInfoVisible')" class="prize-item" src="@/assets/user/myPrizes2.png" alt="">
 
-      <img @click="prizeClick('facial')" class="prize-item" src="@/assets/user/myPrizes1.png" alt="">
+      <img @click="prizeClick('facialMaskVisible')" class="prize-item" src="@/assets/user/myPrizes1.png" alt="">
 
       <div class="dice-dialog-sureButton">
         <img src="@/assets/components/dialog/isOkBtn.png" @click="sureButtonClick">
@@ -19,7 +19,7 @@ export default {
       this.$emit('prizeClick', prize)
     },
     sureButtonClick () {
-
+      this.$emit('PrizeSureBtnClick')
     }
   }
 }

@@ -16,13 +16,13 @@
 export default {
   methods: {
     sureButtonClick () {
-
+      this.$emit('FacialMaskClick', 'facialMaskVisible')
     }
   }
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .facial-mask {
   width: 90%;
   margin: 0 auto;

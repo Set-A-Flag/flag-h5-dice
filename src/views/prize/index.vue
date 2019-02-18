@@ -1,12 +1,32 @@
 <template>
   <div class="prize">
-    <Dialog :visible.sync="visible" :titleImg="getCurrentTitle()">
+    <Dialog :visible.sync="sureTelVisible" :titleImg="TITLE_MAP['sureTelVisible']">
       <div slot="body">
-        <SureTel @sureTel="sureTelHandle" v-if="showControl.isShowSureTel"/>
-        <PrizeList @prizeClick="prizeClickHandle" v-else-if="showControl.isShowPrizeList"/>
-        <QrCode v-else-if="showControl.isShowQrCode"/>
-        <FacialMask v-else-if="showControl.isShowFacialMask"/>
-        <ReceiveInfo v-else-if="showControl.isShowReceiveInfo"/>
+        <SureTel @sureTel="sureTelHandle"/>
+      </div>
+    </Dialog>
+
+    <Dialog :visible.sync="prizeListVisible" :titleImg="TITLE_MAP['prizeListVisible']">
+      <div slot="body">
+        <PrizeList @PrizeSureBtnClick="prizeListVisible = false" @prizeClick="prizeClickHandle"/>
+      </div>
+    </Dialog>
+
+    <Dialog :visible.sync="qrCodeVisible" :titleImg="TITLE_MAP['qrCodeVisible']" @closeCallback="backToPrizeList">
+      <div slot="body">
+        <QrCode/>
+      </div>
+    </Dialog>
+
+    <Dialog :visible.sync="facialMaskVisible" :titleImg="TITLE_MAP['facialMaskVisible']" @closeCallback="backToPrizeList">
+      <div slot="body">
+        <FacialMask @FacialMaskClick="backToPrizeList"/>
+      </div>
+    </Dialog>
+
+    <Dialog :visible.sync="receiveInfoVisible" :titleImg="TITLE_MAP['receiveInfoVisible']" @closeCallback="backToPrizeList">
+      <div slot="body">
+        <ReceiveInfo @ReceiveInfoClick="backToPrizeList"/>
       </div>
     </Dialog>
   </div>
@@ -21,11 +41,11 @@ import FacialMask from './FacialMask'
 import ReceiveInfo from './ReceiveInfo'
 
 const TITLE_MAP = {
-  'isShowSureTel': '/static/images/prize/phoneTitle.png',
-  'isShowPrizeList': '/static/images/prize/myPrizesTitle.png',
-  'isShowQrCode': '/static/images/prize/PrizesQRcodeTitle.png',
-  'isShowFacialMask': '/static/images/prize/PrizeTitle.png',
-  'isShowReceiveInfo': '/static/images/prize/myAddresTitle.png'
+  'sureTelVisible': '/static/images/prize/phoneTitle.png',
+  'prizeListVisible': '/static/images/prize/myPrizesTitle.png',
+  'qrCodeVisible': '/static/images/prize/PrizesQRcodeTitle.png',
+  'facialMaskVisible': '/static/images/prize/PrizeTitle.png',
+  'receiveInfoVisible': '/static/images/prize/myAddresTitle.png'
 }
 
 export default {
@@ -40,53 +60,38 @@ export default {
   },
   data () {
     return {
-      visible: false,
-      showControl: {
-        isShowSureTel: true,
-        isShowPrizeList: false,
-        isShowQrCode: false,
-        isShowFacialMask: false,
-        isShowReceiveInfo: false
-      }
+      sureTelVisible: false,
+      prizeListVisible: false,
+      qrCodeVisible: false,
+      facialMaskVisible: false,
+      receiveInfoVisible: false
     }
   },
   methods: {
+    backToPrizeList () {
+      this.setAllUnVisible()
+      this.prizeListVisible = true
+    },
+    close (visible) {
+      this[visible] = false
+    },
     sureTelHandle () {
-      this.setAllUnshow()
-      this.showControl.isShowPrizeList = true
+      this.sureTelVisible = false
+      this.prizeListVisible = true
     },
-    prizeClickHandle (prize) {
-      this.setAllUnshow()
-      if (prize === 'code') {
-        this.showControl.isShowQrCode = true
-      } else if (prize === 'receive') {
-        this.showControl.isShowReceiveInfo = true       
-      } else if (prize === 'facial') {
-        this.showControl.isShowFacialMask = true
-      }
+    prizeClickHandle (activeVisible) {
+      this.prizeListVisible = false
+      this[activeVisible] = true
     },
-    setAllUnshow () {
+    setAllUnVisible () {
       const _this = this
-      Object.keys(_this.showControl).forEach(state => {
-        _this.showControl[state] = false
+      Object.keys(TITLE_MAP).forEach(visible => {
+        _this[visible] = false
       })
-    },
-    getCurrentTitle () {
-      const _this = this
-      let titleImg = ''
-      Object.keys(_this.showControl).forEach(state => {
-        _this.showControl[state] && (titleImg = TITLE_MAP[state])
-      })
-      return titleImg
     }
   },
-  watch: {
-    visible (next) {
-      if (next) {
-        this.setAllUnshow()
-        this.showControl.isShowSureTel = true
-      }
-    }
+  created () {
+    this.TITLE_MAP = TITLE_MAP
   }
 }
 </script>

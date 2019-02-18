@@ -16,7 +16,7 @@
 export default {
   methods: {
     sureButtonClick () {
-
+      this.$emit('ReceiveInfoClick', 'receiveInfoVisible')
     }
   }
 }
