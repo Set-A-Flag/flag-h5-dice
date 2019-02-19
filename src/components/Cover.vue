@@ -1,10 +1,14 @@
 <template>
-  <div class="dice-cover"></div>
+  <div @click="clickHandle" class="dice-cover"></div>
 </template>
 
 <script>
 export default {
-
+  methods: {
+    clickHandle () {
+      this.$emit('click')
+    }
+  }
 }
 </script>
 

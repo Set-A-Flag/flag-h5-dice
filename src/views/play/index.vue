@@ -49,12 +49,18 @@
         <div v-if="btnModalShow" class="modal"></div>
       </div>
     </div>
+    <SurprisePrize :visible.sync="surprisePrizeVisible"/>
   </div>
 </template>
 <script>
+import SurprisePrize from './SurprisePrize'
 export default {
+  components: {
+    SurprisePrize
+  },
   data(){
     return{
+      surprisePrizeVisible: true,
       btnModalShow:false,//按钮遮罩
       point:{
         value:100
