@@ -27,7 +27,8 @@ const ICON_PRIZE_MAP = {
   'iphone': 'LuckDrawPrize2.png',
   'facialBox': 'LuckDrawPrize1.png',
   'loveBox': 'LuckDrawPrize5.png',
-  'ipad': 'LuckDrawPrize4.png'
+  'ipad': 'LuckDrawPrize4.png',
+  'none': 'LuckDrawPrize3.png'
 }
 
 export default {
@@ -36,6 +37,7 @@ export default {
       type: Boolean,
       default: false
     },
+    // 获得的奖
     prize: {
       type: String,
       default: 'iphone'
