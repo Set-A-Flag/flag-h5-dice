@@ -1,12 +1,12 @@
-const dev = '192.168.0.1'
+const dev = 'http://www.13idea.com:9002'
 const current = dev
 
-// module.exports = {
-//     'xx': {
-//         target: current,
-//         changeOrigin: true
-//     }
-// }
 module.exports = {
-    
+    '/dice': {
+        target: current,
+        changeOrigin: true
+    }
 }
+// module.exports = {
+    
+// }

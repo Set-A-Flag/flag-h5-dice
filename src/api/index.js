@@ -2,7 +2,8 @@ import axios from 'axios'
 import homeObject from './home'
 
 const base = {
-    home: 'home'
+    home: 'home',
+    dice: 'dice'
 }
 
 // 添加请求拦截器

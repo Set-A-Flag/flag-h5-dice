@@ -25,6 +25,8 @@ import prize from '@/views/prize'
 import about from '@/views/about'
 import ranking from '@/views/ranking'
 
+import {home} from '@/api'
+
 export default {
   name: 'home',
   components: {
@@ -50,6 +52,11 @@ export default {
     rankButtonClick () {
       this.$refs.ranking.visible = true
     }
+  },
+  created() {
+    home.userRank().then(res => {
+      console.log(res)
+    })
   }
 }
 </script>
