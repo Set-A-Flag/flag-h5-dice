@@ -20,11 +20,21 @@
     </Dialog>
 
     <Dialog :visible.sync="prizeCheckVisible" titleImg="static/images/store/writeOffAwardTitle.png">
-      <PrizeCheck slot="body"/>
+      <PrizeCheck @lottery="lotteryHandle" slot="body"/>
     </Dialog>
 
     <Dialog :visible.sync="codeVisible" titleImg="static/images/store/activityTitle.png">
       <Code slot="body"/>
+    </Dialog>
+
+    <SurprisePrize @afterLottery="afterLotteryHandle" :visible.sync="surprisePrizeVisible"/>
+
+    <Dialog :visible.sync="facialMaskVisible" titleImg="static/images/store/activityTitle.png">
+      <FacialMask @FacialMaskClick="FacialMaskClickHandle" slot="body"/>
+    </Dialog>
+
+    <Dialog :hasSureButton="true" @sureCallBack="notWonSureHandle" :visible.sync="notWonVisible" titleImg="static/images/store/PrizeTitle1.png">
+      <NotWon slot="body"/>
     </Dialog>
   </div>
 </template>
@@ -35,6 +45,9 @@ import About from './About'
 import Code from './Code'
 import PrizeCheck from './PrizeCheck'
 import Ranking from './Ranking'
+import SurprisePrize from "./SurprisePrize"
+import FacialMask from "./FacialMask"
+import NotWon from "./NotWon"
 
 export default {
   components: {
@@ -42,19 +55,41 @@ export default {
     About,
     Code,
     PrizeCheck,
-    Ranking
+    Ranking,
+    SurprisePrize,
+    FacialMask,
+    NotWon
   },
   data () {
     return {
       aboutVisible: false,
       codeVisible: false,
       rankingVisible: false,
-      prizeCheckVisible: false
+      prizeCheckVisible: false,
+      surprisePrizeVisible: false,
+      facialMaskVisible: false,
+      notWonVisible: false
     }
   },
   methods: {
     showDialog (visible) {
       this[visible] = true
+    },
+    lotteryHandle () {
+      this.prizeCheckVisible = false
+      this.surprisePrizeVisible = true
+    },
+    afterLotteryHandle () {
+      this.surprisePrizeVisible = false
+      this.notWonVisible = true
+    },
+    FacialMaskClickHandle () {
+      this.facialMaskVisible = false
+      this.prizeCheckVisible = true
+    },
+    notWonSureHandle () {
+      this.notWonVisible = false
+      this.prizeCheckVisible = true
     }
   }
 }

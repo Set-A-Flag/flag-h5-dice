@@ -5,7 +5,7 @@
     </div>
 
     <div class="prize-check-camera">
-      <img src="@/assets/store/writeOffBtn.png" alt="">
+      <img @click="lottery" src="@/assets/store/writeOffBtn.png" alt="">
 
       <p>点击按钮扫描二维码，核销用户奖品</p>
     </div>
@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-  </div>  
+  </div>
 </template>
 
 <script>
@@ -141,6 +141,12 @@ export default {
         score: 100
       }
     ]
+  },
+  methods: {
+    // 扫描二维码抽奖
+    lottery () {
+      this.$emit('lottery')
+    }
   }
 }
 </script>
