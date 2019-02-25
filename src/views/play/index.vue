@@ -45,18 +45,22 @@
     <!-- <button @click="changePosition">测试</button><span>{{game.random}}</span> -->
     <div class="gameFooter">
       <div class="goBtn">
-        <img src="/static/game/goBtn.png" @click="getRandom(19)" alt="">
+        <img src="/static/game/goBtn.png" @click="scoreShow = !scoreShow" alt="">
         <div v-if="btnModalShow" class="modal"></div>
       </div>
     </div>
     <SurprisePrize :visible.sync="surprisePrizeVisible"/>
+    <scoreO :visible="scoreShow" :mode="scoreMode"/>
   </div>
 </template>
 <script>
 import SurprisePrize from './SurprisePrize'
+import scoreO from './scoreO'
+
 export default {
   components: {
-    SurprisePrize
+    SurprisePrize,
+    scoreO
   },
   data(){
     return{
@@ -76,7 +80,9 @@ export default {
         random:0,//骰子随机数
         monkeySiteNum:0,
         seziImgIndex:0
-      }
+      },
+      scoreShow: false,
+      scoreMode: '10'
     }
   },
   methods:{
