@@ -1,33 +1,23 @@
 <template>
   <div class="prize">
     <Dialog :visible.sync="sureTelVisible" :titleImg="TITLE_MAP['sureTelVisible']">
-      <div slot="body">
-        <SureTel @sureTel="sureTelHandle"/>
-      </div>
+        <SureTel slot="body" @sureTel="sureTelHandle"/>
     </Dialog>
 
     <Dialog :visible.sync="prizeListVisible" :titleImg="TITLE_MAP['prizeListVisible']">
-      <div slot="body">
-        <PrizeList @PrizeSureBtnClick="prizeListVisible = false" @prizeClick="prizeClickHandle"/>
-      </div>
+        <PrizeList slot="body" @PrizeSureBtnClick="prizeListVisible = false" @prizeClick="prizeClickHandle"/>
     </Dialog>
 
     <Dialog :visible.sync="qrCodeVisible" :titleImg="TITLE_MAP['qrCodeVisible']" @closeCallback="backToPrizeList">
-      <div slot="body">
-        <QrCode/>
-      </div>
+        <QrCode slot="body"/>
     </Dialog>
 
     <Dialog :visible.sync="facialMaskVisible" :titleImg="TITLE_MAP['facialMaskVisible']" @closeCallback="backToPrizeList">
-      <div slot="body">
-        <FacialMask @FacialMaskClick="backToPrizeList"/>
-      </div>
+        <FacialMask slot="body" @FacialMaskClick="backToPrizeList"/>
     </Dialog>
 
     <Dialog :visible.sync="receiveInfoVisible" :titleImg="TITLE_MAP['receiveInfoVisible']" @closeCallback="backToPrizeList">
-      <div slot="body">
-        <ReceiveInfo @ReceiveInfoClick="backToPrizeList"/>
-      </div>
+        <ReceiveInfo slot="body" @ReceiveInfoClick="backToPrizeList"/>
     </Dialog>
   </div>
 </template>
@@ -68,13 +58,16 @@ export default {
     }
   },
   methods: {
+    // 返回奖品列表
     backToPrizeList () {
       this.setAllUnVisible()
       this.prizeListVisible = true
     },
+    // 关闭窗口
     close (visible) {
       this[visible] = false
     },
+    // 确认手机号
     sureTelHandle () {
       this.sureTelVisible = false
       this.prizeListVisible = true
@@ -88,6 +81,15 @@ export default {
       Object.keys(TITLE_MAP).forEach(visible => {
         _this[visible] = false
       })
+    },
+    // 第一次查看奖品，需要输入手机号
+    isNeedPhone () {
+      const result = true
+      if (result) {
+        this.sureTelVisible = true
+      } else {
+        this.prizeListVisible = true
+      }
     }
   },
   created () {
