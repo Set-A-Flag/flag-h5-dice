@@ -48,6 +48,11 @@ export default {
         visible(newv, oldv) {
             this.$nextTick(() => {
                 this.visibled = newv
+                if(this.visibled){
+                    window.setTimeout(()=>{
+                        this.$parent.scoreShow = false;
+                    },2000)
+                }
             })
         }
     }
