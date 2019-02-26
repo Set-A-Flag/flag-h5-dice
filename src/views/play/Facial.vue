@@ -5,7 +5,7 @@
     :hasSureButton="true"
     @sureCallBack="visible = false">
     <div slot="body" class="facial-mask">
-      <img class="facial-mask-img" src="static/game/Prize2.png" alt="">
+      <img class="facial-mask-img" src="@/assets/game/Prize2.png" alt="">
 
       <p class="facial-mask-info">恭喜获得果本面膜一片！请去“我的奖品”页面领取</p>
     </div>
@@ -21,9 +21,26 @@ export default {
   },
   data () {
     return {
-      visible: false
+      visibled: false
     }
-  }
+  },
+  props: {
+      visible: {
+          type: Boolean,
+          default: false
+      }
+      
+    },
+    watch: {
+        visible(newv, oldv) {
+            this.$nextTick(() => {
+                this.visibled = newv
+                if(this.visibled){
+                    
+                }
+            })
+        }
+    }
 }
 </script>
 

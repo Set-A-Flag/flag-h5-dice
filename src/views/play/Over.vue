@@ -1,12 +1,12 @@
 <template>
   <Dialog
-    :visible.sync="visible"
+    :visible.sync="visibled"
     titleImg="/static/game/PrizeTitle4.png"
     :hasSureButton="true"
-    @sureCallBack="visible = false">
+    @sureCallBack="backHome">
     <div slot="body" class="over-content">
       <p class="over-content-info">游戏结束！本轮游戏得分</p>
-      <p class="over-content-score">130</p>
+      <p class="over-content-score">{{piont}}</p>
     </div>
   </Dialog>
 </template>
@@ -20,9 +20,33 @@ export default {
   },
   data () {
     return {
-      visible: false
+      visibled: false
     }
-  }
+  },
+  methods:{
+    backHome(){
+      this.visibled = false;
+      this.$router.push('/home')
+    }
+  },
+  props: {
+      visible: {
+          type: Boolean,
+          default: false
+      },
+      piont: {
+          type: Number,
+          default: 100
+          
+      }
+    },
+    watch: {
+        visible(newv, oldv) {
+            this.$nextTick(() => {
+                this.visibled = newv
+            })
+        }
+    }
 }
 </script>
 

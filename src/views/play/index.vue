@@ -9,58 +9,67 @@
       <!-- 游戏内容 -->
       <div class="monkey" :style="game.monkeyStyle">
         <!-- 移动的猴子 -->
-        <img v-show="game.monkeyImg==1" src="/static/game/player1.png" alt>
-        <img v-show="game.monkeyImg==2" src="/static/game/player2.png" alt>
-        <img v-show="game.monkeyImg==3" src="/static/game/player3.png" alt>
-        <img v-show="game.monkeyImg==4" src="/static/game/player4.png" alt>
+        <img v-show="game.monkeyImg==1" src="@/assets/game/player1.png" alt>
+        <img v-show="game.monkeyImg==2" src="@/assets/game/player2.png" alt>
+        <img v-show="game.monkeyImg==3" src="@/assets/game/player3.png" alt>
+        <img v-show="game.monkeyImg==4" src="@/assets/game/player4.png" alt>
       </div>
       <div class="sezi">
-        <img v-show="game.seziImgIndex==1&&game.random==0" src="/static/sezi/骰子_00001.png" alt>
-        <img v-show="game.seziImgIndex==2&&game.random==0" src="/static/sezi/骰子_00002.png" alt>
-        <img v-show="game.seziImgIndex==3&&game.random==0" src="/static/sezi/骰子_00003.png" alt>
-        <img v-show="game.seziImgIndex==4&&game.random==0" src="/static/sezi/骰子_00004.png" alt>
-        <img v-show="game.seziImgIndex==5&&game.random==0" src="/static/sezi/骰子_00005.png" alt>
-        <img v-show="game.seziImgIndex==6&&game.random==0" src="/static/sezi/骰子_00006.png" alt>
-        <img v-show="game.seziImgIndex==7&&game.random==0" src="/static/sezi/骰子_00007.png" alt>
-        <img v-show="game.seziImgIndex==8&&game.random==0" src="/static/sezi/骰子_00008.png" alt>
-        <img v-show="game.seziImgIndex==9&&game.random==0" src="/static/sezi/骰子_00009.png" alt>
-        <img v-show="game.seziImgIndex==10&&game.random==0" src="/static/sezi/骰子_00010.png" alt>
-        <img v-show="game.seziImgIndex==11&&game.random==0" src="/static/sezi/骰子_00011.png" alt>
-        <img v-show="game.seziImgIndex==12&&game.random==0" src="/static/sezi/骰子_00012.png" alt>
-        <img v-show="game.seziImgIndex==13&&game.random==0" src="/static/sezi/骰子_00013.png" alt>
-        <img v-show="game.seziImgIndex==14&&game.random==0" src="/static/sezi/骰子_00014.png" alt>
-        <img v-show="game.seziImgIndex==15&&game.random==0" src="/static/sezi/骰子_00015.png" alt>
-        <img v-show="game.seziImgIndex==16&&game.random==0" src="/static/sezi/骰子_00016.png" alt>
-        <img v-show="game.seziImgIndex==17&&game.random==0" src="/static/sezi/骰子_00017.png" alt>
-        <img v-show="game.seziImgIndex==18&&game.random==0" src="/static/sezi/骰子_00018.png" alt>
-        <img v-show="game.seziImgIndex==19&&game.random==0" src="/static/sezi/骰子_00019.png" alt>
-        <img v-show="game.random==1&&game.seziImgIndex==0" src="/static/sezi/骰子_00032.png" alt>
-        <img v-show="game.random==2&&game.seziImgIndex==0" src="/static/sezi/骰子_00033.png" alt>
-        <img v-show="game.random==3&&game.seziImgIndex==0" src="/static/sezi/骰子_00034.png" alt>
-        <img v-show="game.random==4&&game.seziImgIndex==0" src="/static/sezi/骰子_00035.png" alt>
-        <img v-show="game.random==5&&game.seziImgIndex==0" src="/static/sezi/骰子_00036.png" alt>
-        <img v-show="game.random==6&&game.seziImgIndex==0" src="/static/sezi/骰子_00037.png" alt>
+        <img v-show="game.seziImgIndex==1&&game.random==0" src="@/assets/sezi/骰子_00001.png" alt>
+        <img v-show="game.seziImgIndex==2&&game.random==0" src="@/assets/sezi/骰子_00002.png" alt>
+        <img v-show="game.seziImgIndex==3&&game.random==0" src="@/assets/sezi/骰子_00003.png" alt>
+        <img v-show="game.seziImgIndex==4&&game.random==0" src="@/assets/sezi/骰子_00004.png" alt>
+        <img v-show="game.seziImgIndex==5&&game.random==0" src="@/assets/sezi/骰子_00005.png" alt>
+        <img v-show="game.seziImgIndex==6&&game.random==0" src="@/assets/sezi/骰子_00006.png" alt>
+        <img v-show="game.seziImgIndex==7&&game.random==0" src="@/assets/sezi/骰子_00007.png" alt>
+        <img v-show="game.seziImgIndex==8&&game.random==0" src="@/assets/sezi/骰子_00008.png" alt>
+        <img v-show="game.seziImgIndex==9&&game.random==0" src="@/assets/sezi/骰子_00009.png" alt>
+        <img v-show="game.seziImgIndex==10&&game.random==0" src="@/assets/sezi/骰子_00010.png" alt>
+        <img v-show="game.seziImgIndex==11&&game.random==0" src="@/assets/sezi/骰子_00011.png" alt>
+        <img v-show="game.seziImgIndex==12&&game.random==0" src="@/assets/sezi/骰子_00012.png" alt>
+        <img v-show="game.seziImgIndex==13&&game.random==0" src="@/assets/sezi/骰子_00013.png" alt>
+        <img v-show="game.seziImgIndex==14&&game.random==0" src="@/assets/sezi/骰子_00014.png" alt>
+        <img v-show="game.seziImgIndex==15&&game.random==0" src="@/assets/sezi/骰子_00015.png" alt>
+        <img v-show="game.seziImgIndex==16&&game.random==0" src="@/assets/sezi/骰子_00016.png" alt>
+        <img v-show="game.seziImgIndex==17&&game.random==0" src="@/assets/sezi/骰子_00017.png" alt>
+        <img v-show="game.seziImgIndex==18&&game.random==0" src="@/assets/sezi/骰子_00018.png" alt>
+        <img v-show="game.seziImgIndex==19&&game.random==0" src="@/assets/sezi/骰子_00019.png" alt>
+        <img v-show="game.random==1&&game.seziImgIndex==0" src="@/assets/sezi/骰子_00032.png" alt>
+        <img v-show="game.random==2&&game.seziImgIndex==0" src="@/assets/sezi/骰子_00033.png" alt>
+        <img v-show="game.random==3&&game.seziImgIndex==0" src="@/assets/sezi/骰子_00034.png" alt>
+        <img v-show="game.random==4&&game.seziImgIndex==0" src="@/assets/sezi/骰子_00035.png" alt>
+        <img v-show="game.random==5&&game.seziImgIndex==0" src="@/assets/sezi/骰子_00036.png" alt>
+        <img v-show="game.random==6&&game.seziImgIndex==0" src="@/assets/sezi/骰子_00037.png" alt>
       </div>
     </div>
     <!-- <button @click="changePosition">测试</button><span>{{game.random}}</span> -->
     <div class="gameFooter">
       <div class="goBtn">
-        <img src="/static/game/goBtn.png" @click="go" alt>
-        <div v-if="btnModalShow" class="modal"></div>
+        <img src="@/assets/game/goBtn.png" @click="go" alt>
+        <div v-if="btnModalShow||game.time==0" class="modal"></div>
       </div>
     </div>
+    <!-- 抽奖 -->
     <SurprisePrize :visible.sync="surprisePrizeVisible"/>
+    <!-- 分数变化 -->
     <scoreO :visible="scoreShow" :mode="scoreMode"/>
+    <!-- 面膜 -->
+    <Facial :visible="facialShow"></Facial>
+    <!-- 游戏结束 -->
+    <Over :visible="overShow&&!surprisePrizeVisible&&!scoreShow&&!facialShow" :piont="point.value"></Over>
   </div>
 </template>
 <script>
 import SurprisePrize from "./SurprisePrize";
 import scoreO from "./scoreO";
-
+import Facial from "./Facial";
+import Over from "./Over";
 export default {
   components: {
     SurprisePrize,
-    scoreO
+    scoreO,
+    Facial,
+    Over
   },
   data() {
     return {
@@ -82,6 +91,8 @@ export default {
         seziImgIndex: 0
       },
       scoreShow: false,
+      overShow: false,
+      facialShow: false,
       scoreMode: "10",
       canHaveMianmo: true
     };
@@ -191,6 +202,8 @@ export default {
           this.game.monkeyStyle.top = ((128 + 12) * 2) / 75 + "rem";
           if (this.canHaveMianmo && flag) {
             // 获取面膜
+            this.facialShow = true
+            this.canHaveMianmo = false
           }
           break;
         case 7:
@@ -219,6 +232,7 @@ export default {
             this.game.monkeyImg = 1;
             if (flag) {
               // 进行抽奖
+              this.surprisePrizeVisible = true
             }
           });
           break;
@@ -229,6 +243,8 @@ export default {
             this.game.monkeyImg = 2;
             if (this.canHaveMianmo && flag) {
               // 获取面膜
+              this.facialShow = true
+              this.canHaveMianmo = false
             }
             // this.game.monkeyStyle.background='url(/static/game/player2.png) no-repeat center top'
           });
@@ -283,6 +299,12 @@ export default {
           break;
         default:
           break;
+      }
+      if(this.game.time==0&&flag){
+        // 游戏结束
+        setTimeout(()=>{
+          this.overShow = true;
+        },1000)
       }
     }
   }
