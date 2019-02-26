@@ -3,7 +3,7 @@
     :visible.sync="visible"
     titleImg="/static/game/PrizeTitle2.png"
     :hasSureButton="true"
-    @sureCallBack="visible = false">
+    @sureCallBack="sureCallBack">
     <div slot="body" class="facial-mask">
       <img class="facial-mask-img" src="@/assets/game/Prize2.png" alt="">
 
@@ -30,6 +30,11 @@ export default {
           default: false
       }
       
+    },
+    methods:{
+      sureCallBack(){
+        this.$parent.facialShow = false;
+      }
     },
     watch: {
         visible(newv, oldv) {  
