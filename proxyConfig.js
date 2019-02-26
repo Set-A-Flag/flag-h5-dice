@@ -5,6 +5,10 @@ module.exports = {
     '/dice': {
         target: current,
         changeOrigin: true
+    },
+    '/cgi-bin': {
+        target: 'https://api.weixin.qq.com',
+        changeOrigin: true
     }
 }
 // module.exports = {
