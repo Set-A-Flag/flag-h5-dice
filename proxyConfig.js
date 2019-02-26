@@ -2,7 +2,7 @@ const dev = 'http://www.13idea.com:9002'
 const current = dev
 
 module.exports = {
-    '/dice': {
+    '/h5/dice': {
         target: current,
         changeOrigin: true
     },

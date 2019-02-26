@@ -3,7 +3,7 @@ import homeObject from './home'
 
 const base = {
     home: 'home',
-    dice: 'dice'
+    dice: 'h5/dice'
 }
 
 // 添加请求拦截器
