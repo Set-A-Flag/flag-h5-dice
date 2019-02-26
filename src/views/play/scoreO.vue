@@ -3,7 +3,15 @@
         <div v-show="visibled">
             <div class="dice-cover"></div>
             <div class="scoreImage">
-                <img :src="`/static/game/${modeImgName}.png`" alt="">
+                <img v-show="mode=='10'" src="@/assets/game/+10.png" alt="">
+                <img v-show="mode=='20'" src="@/assets/game/+20.png" alt="">
+                <img v-show="mode=='30'" src="@/assets/game/+30.png" alt="">
+                <img v-show="mode=='-10'" src="@/assets/game/-10.png" alt="">
+                <img v-show="mode=='-20'" src="@/assets/game/-20.png" alt="">
+                <img v-show="mode=='-30'" src="@/assets/game/-30.png" alt="">
+                <img v-show="mode=='halve'" src="@/assets/game/halve.png" alt="">
+                <img v-show="mode=='onceMore'" src="@/assets/game/OnceMore.png" alt="">
+                <img v-show="mode=='doubling'" src="@/assets/game/Doubling.png" alt="">
             </div>
         </div>
     </transition>
@@ -46,14 +54,14 @@ export default {
     },
     watch: {
         visible(newv, oldv) {
-            this.$nextTick(() => {
+            
                 this.visibled = newv
                 if(this.visibled){
                     window.setTimeout(()=>{
                         this.$parent.scoreShow = false;
                     },2000)
                 }
-            })
+            
         }
     }
 }

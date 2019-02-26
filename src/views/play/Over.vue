@@ -42,9 +42,9 @@ export default {
     },
     watch: {
         visible(newv, oldv) {
-            this.$nextTick(() => {
-                this.visibled = newv
-            })
+           
+          this.visibled = newv
+            
         }
     }
 }
