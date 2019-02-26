@@ -163,38 +163,38 @@ export default {
         case 3:
           this.game.monkeyStyle.left = ((128 + 10) * 3) / 75 + "rem";
           this.game.monkeyStyle.top = 0;
+          if (flag) {
+            this.scoreShow = true;
+            this.scoreMode = "onceMore";
+            this.game.time = this.game.time + 1;
+          }
           this.$nextTick(() => {
             this.game.monkeyImg = 1;
-            if (flag) {
-              this.scoreShow = true;
-              this.scoreMode = "onceMore";
-              this.game.time = this.game.time + 1;
-            }
           });
           break;
         case 4:
           this.game.monkeyStyle.left = ((128 + 10) * 3) / 75 + "rem";
           this.game.monkeyStyle.top = (128 + 12) / 75 + "rem";
+          if (flag) {
+            this.scoreShow = true;
+            this.scoreMode = "halve";
+            this.point.value = this.point.value/2;
+          }
           this.$nextTick(() => {
             this.game.monkeyImg = 4;
-            if (flag) {
-              this.scoreShow = true;
-              this.scoreMode = "halve";
-              this.point.value = this.point.value/2;
-            }
           });
           break;
         case 5:
           this.game.monkeyStyle.left = ((128 + 10) * 4) / 75 + "rem";
           this.game.monkeyStyle.top = (128 + 12) / 75 + "rem";
+          if (flag) {
+            let num = Math.floor(Math.random() * 3 + 1) * 10;
+            this.scoreShow = true;
+            this.scoreMode = "" + num;
+            this.point.value = this.point.value + num;
+          }
           this.$nextTick(() => {
             this.game.monkeyImg = 1;
-            if (flag) {
-              let num = Math.floor(Math.random() * 3 + 1) * 10;
-              this.scoreShow = true;
-              this.scoreMode = "" + num;
-              this.point.value = this.point.value + num;
-            }
           });
           break;
         case 6:
@@ -209,14 +209,14 @@ export default {
         case 7:
           this.game.monkeyStyle.left = ((128 + 10) * 4) / 75 + "rem";
           this.game.monkeyStyle.top = ((128 + 12) * 3) / 75 + "rem";
+          if (flag) {
+            let num = Math.floor(Math.random() * 3 + 1) * 10;
+            this.scoreShow = true;
+            this.scoreMode = "-" + num;
+            this.point.value = this.point.value - num;
+          }
           this.$nextTick(() => {
             this.game.monkeyImg = 2;
-            if (flag) {
-              let num = Math.floor(Math.random() * 3 + 1) * 10;
-              this.scoreShow = true;
-              this.scoreMode = "-" + num;
-              this.point.value = this.point.value - num;
-            }
             // this.game.monkeyStyle.background='url(/static/game/player2.png) no-repeat center top'
           });
           break;
@@ -228,24 +228,24 @@ export default {
         case 9:
           this.game.monkeyStyle.left = ((128 + 10) * 2) / 75 + "rem";
           this.game.monkeyStyle.top = ((128 + 12) * 3) / 75 + "rem";
+          if (flag) {
+            // 进行抽奖
+            this.surprisePrizeVisible = true
+          }
           this.$nextTick(() => {
             this.game.monkeyImg = 1;
-            if (flag) {
-              // 进行抽奖
-              this.surprisePrizeVisible = true
-            }
           });
           break;
         case 10:
           this.game.monkeyStyle.left = ((128 + 10) * 2) / 75 + "rem";
           this.game.monkeyStyle.top = ((128 + 12) * 4) / 75 + "rem";
+          if (this.canHaveMianmo && flag) {
+            // 获取面膜
+            this.facialShow = true
+            this.canHaveMianmo = false
+          }
           this.$nextTick(() => {
             this.game.monkeyImg = 2;
-            if (this.canHaveMianmo && flag) {
-              // 获取面膜
-              this.facialShow = true
-              this.canHaveMianmo = false
-            }
             // this.game.monkeyStyle.background='url(/static/game/player2.png) no-repeat center top'
           });
           break;
@@ -257,13 +257,13 @@ export default {
         case 12:
           this.game.monkeyStyle.left = 0;
           this.game.monkeyStyle.top = ((128 + 12) * 4) / 75 + "rem";
+          if (flag) {
+            this.scoreShow = true;
+            this.scoreMode = "onceMore";
+            this.game.time = this.game.time + 1;
+          }
           this.$nextTick(() => {
             this.game.monkeyImg = 3;
-            if (flag) {
-              this.scoreShow = true;
-              this.scoreMode = "onceMore";
-              this.game.time = this.game.time + 1;
-            }
           });
           break;
         case 13:
@@ -321,7 +321,7 @@ export default {
     margin-top: 1rem;
     line-height: 200/75rem;
     font-size: 1rem;
-    background: url(/static/game/scoreTitle.png) no-repeat center top;
+    background: url(../../assets/game/scoreTitle.png) no-repeat center top;
     background-size: 453/75rem 183/75rem;
     font-family: sans-serif;
     color: #7d3d00;
@@ -332,7 +332,7 @@ export default {
     position: relative;
     margin: 1rem auto 0;
     height: 687/75rem;
-    background: url(/static/game/guidao.png) no-repeat center top;
+    background: url(../../assets/game/guidao.png) no-repeat center top;
     background-size: 685/75rem 687/75rem;
     .sezi {
       position: absolute;
