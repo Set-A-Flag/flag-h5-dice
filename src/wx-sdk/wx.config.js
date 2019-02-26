@@ -28,7 +28,7 @@ function createSignature (params) {
 
 getToken(params.appid, params.appsecret).then(res1 => {
     getJsapiTicketByToken(res1.data.access_token).then(res2 => {
-        params['jsapi_ticket'] = res2.ticket
+        params['jsapi_ticket'] = res2.data.ticket
         let timestamp = new Date().getTime()
         params['timestamp'] = timestamp
 
