@@ -1,8 +1,8 @@
-const dev = 'http://www.13idea.com/h5/dice/'
+const dev = 'http://www.13idea.com'
 const current = dev
 
 module.exports = {
-    '/dice': {
+    '/h5/dice': {
         target: current,
         changeOrigin: true
     },
