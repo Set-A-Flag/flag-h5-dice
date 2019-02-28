@@ -5,7 +5,7 @@
     </div>
 
     <div class="prize-check-camera">
-      <img @click="lottery" src="@/assets/store/writeOffBtn.png" alt="">
+      <img @click="saoYiSao" src="@/assets/store/writeOffBtn.png" alt="">
 
       <p>点击按钮扫描二维码，核销用户奖品</p>
     </div>
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import wx from 'weixin-js-sdk'
 export default {
   created () {
     this.mockData = [
@@ -143,6 +144,23 @@ export default {
     ]
   },
   methods: {
+    saoYiSao () {
+      const _this = this
+      wx.scanQRCode({
+        needResult : 1,
+        scanType : [ "qrCode", "barCode" ],
+        success : function(res) {
+          console.log(res)
+          alert(JSON.stringify(res))
+          _this.lottery()
+        },
+        fail : function(res) {
+          console.log(res)
+          alert(JSON.stringify(res))
+  
+        }
+      })
+    },
     // 扫描二维码抽奖
     lottery () {
       this.$emit('lottery')
