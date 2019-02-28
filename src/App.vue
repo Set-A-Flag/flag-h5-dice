@@ -15,6 +15,15 @@ export default {
     init() {
       console.log(window.screen.height)
       console.log(window.screen.width)
+      let checkPro = this.checkProduction()
+      if(checkPro) {
+        
+      } else {
+        
+      }
+    },
+    checkProduction() {
+      return process.env.NODE_ENV === 'production'
     }
   }
 }
