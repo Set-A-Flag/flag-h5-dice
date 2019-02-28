@@ -72,4 +72,5 @@ function SHA1(sIn) {
     return SHA1Value.toUpperCase();  
 }  
 
-module.exports = SHA1
+// module.exports = SHA1
+export default SHA1

@@ -1,6 +1,10 @@
-var wx = require('weixin-js-sdk');
-var axios = require('axios');
-var sha1 = require('./sha1')
+// var wx = require('weixin-js-sdk');
+// var axios = require('axios');
+// var sha1 = require('./sha1')
+
+import wx from 'weixin-js-sdk'
+import axios from 'axios'
+import sha1 from './sha1'
 
 var params = {
     appid: 'wx3abc94d28018f67b',

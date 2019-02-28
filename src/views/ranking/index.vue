@@ -52,6 +52,8 @@
 </template>
 <script>
 import Dialog from '@/components/Dialog'
+import { home } from '@/api'
+
 export default {
   name: 'rank',
   components: {
@@ -66,6 +68,11 @@ export default {
     }
   },
   created() {
+    home.checkNumOfGames({
+      account: 'huki'
+    }).then(res => {
+      console.log(res)
+    })
     this.mokeData = [
       {
         rank: 1,
