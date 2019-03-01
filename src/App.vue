@@ -3,7 +3,7 @@
     <div class="backgroundImg">
       <img src="@/assets/beijing.png">
     </div>
-    <router-view/>
+    <router-view v-if="logined" />
   </div>
 </template>
 <script>
@@ -14,6 +14,11 @@ export default {
   created() {
     this.checkLogined()
   },
+  data() {
+    return {
+      logined: false
+    }
+  },
   methods: {
     // checkProduction() {
     //   return process.env.NODE_ENV === 'production'
@@ -22,7 +27,6 @@ export default {
       let openId = getCookie('openId')
       // let state = window.location.href
       let state = 'http://www.13idea.com'
-      console.log(state)
       if(!openId) {
         window.location.href = "http://www.13idea.com/h5/dice/wechatAuth/login" + "?state=" + state;
       } else {
@@ -30,6 +34,7 @@ export default {
           alert(res.nickname)
           this.$store.commit('setUserInfo', res)
         })
+        this.logined = true
       }
     }
   }
