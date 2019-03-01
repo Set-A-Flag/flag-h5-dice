@@ -9,15 +9,12 @@
 <script>
 import { getCookie } from '@/tools/commonTool.js'
 import { wechatAuth } from '@/api'
+
 export default {
-  created() {
-    this.init()
+  beforeCreate() {
+    this.checkLogined()
   },
   methods: {
-    init() {
-      // let checkPro = this.checkProduction()
-      this.checkLogined()
-    },
     // checkProduction() {
     //   return process.env.NODE_ENV === 'production'
     // }
@@ -31,6 +28,7 @@ export default {
       } else {
         wechatAuth.getUserInfo(openId).then(res => {
           alert(res.nickname)
+          this.$store.commit('setUserInfo', res)
         })
       }
     }
