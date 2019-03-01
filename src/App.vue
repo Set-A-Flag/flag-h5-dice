@@ -11,7 +11,7 @@ import { getCookie } from '@/tools/commonTool.js'
 import { wechatAuth } from '@/api'
 
 export default {
-  beforeCreate() {
+  created() {
     this.checkLogined()
   },
   methods: {
