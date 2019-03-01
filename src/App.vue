@@ -3,7 +3,7 @@
     <div class="backgroundImg">
       <img src="@/assets/beijing.png">
     </div>
-    <router-view v-if="logined" />
+    <router-view />
   </div>
 </template>
 <script>
@@ -12,12 +12,7 @@ import { wechatAuth } from '@/api'
 
 export default {
   created() {
-    this.checkLogined()
-  },
-  data() {
-    return {
-      logined: false
-    }
+    // this.checkLogined()
   },
   methods: {
     // checkProduction() {

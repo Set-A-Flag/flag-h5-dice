@@ -2,7 +2,9 @@
   <div class="about">
     <Dialog :visible.sync="visible" :titleImg="titleImg" :hasSureButton="hasSureButton" @sureCallBack="sureCallBack">
       <div slot="body">
-        {{ userName}}
+        游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明
+        游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明
+        游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明
       </div>
     </Dialog>
   </div>
@@ -19,11 +21,6 @@ export default {
       visible: false,
       hasSureButton: true,
       titleImg: '/static/images/dialog/gameDescriptionTitle.png'
-    }
-  },
-  computed: {
-    userName() {
-      return this.$store.state.userInfo.nickname
     }
   },
   methods: {
