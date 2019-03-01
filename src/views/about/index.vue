@@ -2,7 +2,7 @@
   <div class="about">
     <Dialog :visible.sync="visible" :titleImg="titleImg" :hasSureButton="hasSureButton" @sureCallBack="sureCallBack">
       <div slot="body">
-        {{ userName.toString()}}
+        {{ userName}}
       </div>
     </Dialog>
   </div>
@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     userName() {
-      return this.$store.userInfo
+      return this.$store.state.userInfo.nickname
     }
   },
   methods: {
