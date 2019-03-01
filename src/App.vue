@@ -23,9 +23,9 @@ export default {
     // }
     checkLogined() {
       let openId = getCookie('openId')
-      // alert(window.location.href)
-      // let state = 'http://192.168.0.103:8080'
-      let state = window.location.href
+      // let state = window.location.href
+      let state = 'www.13idea.com'
+      console.log(state)
       if(!openId) {
         window.location.href = "http://www.13idea.com/h5/dice/wechatAuth/login" + "?state=" + state;
       } else {
