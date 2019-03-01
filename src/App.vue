@@ -24,7 +24,7 @@ export default {
     checkLogined() {
       let openId = getCookie('openId')
       // let state = window.location.href
-      let state = 'www.13idea.com'
+      let state = 'http://www.13idea.com'
       console.log(state)
       if(!openId) {
         window.location.href = "http://www.13idea.com/h5/dice/wechatAuth/login" + "?state=" + state;
