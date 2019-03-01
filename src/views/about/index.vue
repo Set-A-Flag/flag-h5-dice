@@ -2,9 +2,6 @@
   <div class="about">
     <Dialog :visible.sync="visible" :titleImg="titleImg" :hasSureButton="hasSureButton" @sureCallBack="sureCallBack">
       <div slot="body">
-        游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明
-        游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明
-        游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明游戏说明
         <div>
           {{name}}
         </div>
@@ -37,6 +34,9 @@ export default {
     initUser() {
       this.name = getCookie('openId') || 'hhh!'
     }
+  },
+  created() {
+    this.initUser()
   }
 }
 </script>
