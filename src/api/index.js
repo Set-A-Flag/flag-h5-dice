@@ -1,9 +1,11 @@
 import axios from 'axios'
 import homeObject from './home'
+import wechatAuthObject from './wechatAuth'
 
 const base = {
     home: 'home',
-    dice: 'h5/dice/dice'
+    dice: 'h5/dice/dice',
+    wechatAuth: 'h5/dice/wechatAuth'
 }
 
 // 添加请求拦截器
@@ -26,6 +28,7 @@ axios.interceptors.response.use(function (response) {
 
 
 export const home = homeObject(axios, base)
+export const wechatAuth = wechatAuthObject(axios, base)
 
 export default {
     base,

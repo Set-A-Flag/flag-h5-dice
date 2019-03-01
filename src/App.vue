@@ -7,23 +7,32 @@
   </div>
 </template>
 <script>
+import { getCookie } from '@/tools/commonTool.js'
+import { wechatAuth } from '@/api'
 export default {
   created() {
     this.init()
   },
   methods: {
     init() {
-      console.log(window.screen.height)
-      console.log(window.screen.width)
-      let checkPro = this.checkProduction()
-      if(checkPro) {
-        
-      } else {
-        
-      }
+      // let checkPro = this.checkProduction()
+      this.checkLogined()
     },
-    checkProduction() {
-      return process.env.NODE_ENV === 'production'
+    // checkProduction() {
+    //   return process.env.NODE_ENV === 'production'
+    // }
+    checkLogined() {
+      let openId = getCookie('openId')
+      // alert(window.location.href)
+      // let state = 'http://192.168.0.103:8080'
+      let state = window.location.href
+      if(!openId) {
+        window.location.href = "http://www.13idea.com/h5/dice/wechatAuth/login" + "?state=" + state;
+      } else {
+        wechatAuth.getUserInfo(openId).then(res => {
+          console.log(res)
+        })
+      }
     }
   }
 }
