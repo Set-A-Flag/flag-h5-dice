@@ -1,6 +1,6 @@
 <template>
   <div class="store">
-    <div @click="saoYiSao" class="store-title">
+    <div class="store-title">
       <img src="@/assets/store/titleBg.png">
       <div class="store-score">3000</div>
     </div>
@@ -48,7 +48,7 @@ import Ranking from './Ranking'
 import SurprisePrize from "./SurprisePrize"
 import FacialMask from "./FacialMask"
 import NotWon from "./NotWon"
-import wx from 'weixin-js-sdk'
+import wxConfig from './wx-sdk/wx.config'
 
 export default {
   components: {
@@ -73,21 +73,6 @@ export default {
     }
   },
   methods: {
-    saoYiSao () {
-      wx.scanQRCode({
-        needResult : 1,
-        scanType : [ "qrCode", "barCode" ],
-        success : function(res) {
-          console.log(res)
-          alert(JSON.stringify(res))
-        },
-        fail : function(res) {
-          console.log(res)
-          alert(JSON.stringify(res))
-  
-        }
-      })
-    },
     showDialog (visible) {
       this[visible] = true
     },

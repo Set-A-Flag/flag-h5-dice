@@ -3,7 +3,7 @@
 // var sha1 = require('./sha1')
 
 import wx from 'weixin-js-sdk'
-import axios from 'axios'
+import http from './http'
 import sha1 from './sha1'
 
 var params = {
@@ -15,12 +15,12 @@ var params = {
 
 // 获取token
 function getToken (appid, appsecret) {
-    return axios.get(`/cgi-bin/token?grant_type=client_credential&appid=${appid}&secret=${appsecret}`)
+    return http.get(`/cgi-bin/token?grant_type=client_credential&appid=${appid}&secret=${appsecret}`)
 }
 
 // 获取ticket
 function getJsapiTicketByToken (token) {
-    return axios.get(`/cgi-bin/ticket/getticket?access_token=${token}&type=jsapi`)
+    return http.get(`/cgi-bin/ticket/getticket?access_token=${token}&type=jsapi`)
 }
 
 // 制作签名
@@ -31,8 +31,8 @@ function createSignature (params) {
 }
 
 getToken(params.appid, params.appsecret).then(res1 => {
-    getJsapiTicketByToken(res1.data.access_token).then(res2 => {
-        params['jsapi_ticket'] = res2.data.ticket
+    getJsapiTicketByToken(res1.access_token).then(res2 => {
+        params['jsapi_ticket'] = res2.ticket
         let timestamp = new Date().getTime()
         params['timestamp'] = timestamp
 
