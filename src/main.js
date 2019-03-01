@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import App from './App.vue'
-import wxConfig from './wx-sdk/wx.config'
 
 // 路由
 import router from './router/index'
