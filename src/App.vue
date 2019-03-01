@@ -30,7 +30,7 @@ export default {
         window.location.href = "http://www.13idea.com/h5/dice/wechatAuth/login" + "?state=" + state;
       } else {
         wechatAuth.getUserInfo(openId).then(res => {
-          console.log(res)
+          alert(res.nickname)
         })
       }
     }
