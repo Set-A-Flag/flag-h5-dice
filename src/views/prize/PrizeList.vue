@@ -13,14 +13,35 @@
 </template>
 
 <script>
+import {home} from '@/api'
 export default {
+  data  () {
+    return {
+      isShowQrCode: true,
+      isShowFacailMask: true,
+      isShowTreasureBox: true
+    }
+  },
   methods: {
+    queryPrizesList ({account}) {
+      home.queryPrizes({account}).then(res => {
+        console.log(res)
+        if (res && res.result) {
+          const data = res.result
+          this.isShowFacailMask = data.mask === 1
+          this.isShowTreasureBox = data.isTreasureBox
+        }
+      })
+    },
     prizeClick (prize) {
       this.$emit('prizeClick', prize)
     },
     sureButtonClick () {
       this.$emit('PrizeSureBtnClick')
     }
+  },
+  created () {
+    this.queryPrizesList({account: 110})
   }
 }
 </script>

@@ -44,7 +44,7 @@ export default {
       this.$router.push('/play')
     },
     prizeButtonClick () {
-      this.$refs.prize.sureTelVisible = true
+      this.$refs.prize.visible = true
     },
     aboutButtonClick () {
       this.$refs.about.visible = true

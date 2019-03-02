@@ -1,11 +1,11 @@
 <template>
-  <div class="prize">
-    <Dialog :visible.sync="sureTelVisible" :titleImg="TITLE_MAP['sureTelVisible']">
+  <div class="prize" v-if="visible">
+    <Dialog :visible.sync="sureTelVisible" :titleImg="TITLE_MAP['sureTelVisible']" @closeCallback="close">
         <SureTel slot="body" @sureTel="sureTelHandle"/>
     </Dialog>
 
-    <Dialog :visible.sync="prizeListVisible" :titleImg="TITLE_MAP['prizeListVisible']">
-        <PrizeList slot="body" @PrizeSureBtnClick="prizeListVisible = false" @prizeClick="prizeClickHandle"/>
+    <Dialog :visible.sync="prizeListVisible" :titleImg="TITLE_MAP['prizeListVisible']" @closeCallback="close">
+        <PrizeList slot="body" @PrizeSureBtnClick="close" @prizeClick="prizeClickHandle"/>
     </Dialog>
 
     <Dialog :visible.sync="qrCodeVisible" :titleImg="TITLE_MAP['qrCodeVisible']" @closeCallback="backToPrizeList">
@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import {home} from '@/api'
 import Dialog from '@/components/Dialog'
 import SureTel from './SureTel'
 import PrizeList from './PrizeList'
@@ -50,6 +51,7 @@ export default {
   },
   data () {
     return {
+      visible: false,
       sureTelVisible: false,
       prizeListVisible: false,
       qrCodeVisible: false,
@@ -58,6 +60,16 @@ export default {
     }
   },
   methods: {
+    // 第一次查看奖品，需要输入手机号
+    isFirstViewPrizes (account) {
+      home.isFirstViewPrizes({account}).then(res => {
+        if (res && res.result) {
+          const isFirstViewPrizes = res.result
+          this.sureTelVisible = isFirstViewPrizes
+          this.prizeListVisible = !isFirstViewPrizes
+        }
+      })
+    },
     // 返回奖品列表
     backToPrizeList () {
       this.setAllUnVisible()
@@ -65,7 +77,7 @@ export default {
     },
     // 关闭窗口
     close (visible) {
-      this[visible] = false
+      this.visible = false
     },
     // 确认手机号
     sureTelHandle () {
@@ -81,19 +93,15 @@ export default {
       Object.keys(TITLE_MAP).forEach(visible => {
         _this[visible] = false
       })
-    },
-    // 第一次查看奖品，需要输入手机号
-    isNeedPhone () {
-      const result = true
-      if (result) {
-        this.sureTelVisible = true
-      } else {
-        this.prizeListVisible = true
-      }
     }
   },
   created () {
     this.TITLE_MAP = TITLE_MAP
+  },
+  watch: {
+    visible (next) {
+      next? this.isFirstViewPrizes(110) : this.setAllUnVisible()
+    }
   }
 }
 </script>
