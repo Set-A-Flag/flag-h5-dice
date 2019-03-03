@@ -30,16 +30,21 @@ export default {
     async checkLogined() {
       let openId = this.getCookie('openId')
       this.value = openId
-      let state = 'http://www.13idea.com'
-
       if(!openId) {
-        window.location.href = "http://www.13idea.com/h5/dice/wechatAuth/login" + "?state=" + state;
+        this.toLogin()
       } else {
         let res = await wechatAuth.getUserInfo(openId)
-
-        this.xxx = JSON.stringify(res)
-        // this.logined = true
+        if(res && res.result) {
+          this.xxx = res.result
+        } else {
+          this.toLogin()
+        }
       }
+    },
+    toLogin() {
+      let state = 'http://www.13idea.com'
+
+      window.location.href = "http://www.13idea.com/h5/dice/wechatAuth/login" + "?state=" + state;
     },
     getCookie(name) {
       if (document.cookie.length > 0) {
@@ -53,6 +58,9 @@ export default {
           }
       }
       return "";
+    },
+    addCookie(name, value) {
+      document.cookie = `${name}=${value}`;
     }
   }
 }
