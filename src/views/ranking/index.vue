@@ -68,11 +68,11 @@ export default {
     }
   },
   created() {
-    home.checkNumOfGames({
-      account: 'huki'
-    }).then(res => {
-      console.log(res)
-    })
+    // home.checkNumOfGames({
+    //   account: 'huki'
+    // }).then(res => {
+    //   console.log(res)
+    // })
     this.mokeData = [
       {
         rank: 1,

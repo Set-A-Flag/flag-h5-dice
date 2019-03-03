@@ -4,8 +4,6 @@
       <img src="@/assets/beijing.png">
     </div>
     <router-view v-if="routerShow"/>
-    <!-- <div v-for="(item, index) in xxx" :key="item">{{index}} : {{item}}</div> -->
-    {{xxx}}
   </div>
 </template>
 <script>
@@ -13,19 +11,21 @@ import { wechatAuth } from '@/api'
 
 export default {
   created() {
-    this.checkLogined()
+    if(this.checkProduction()) {
+      this.checkLogined()
+    } else {
+      this.routerShow = true
+    }
   },
   data() {
     return {
-      hasId: '',
-      xxx: '',
-      cookie: ''
+      routerShow: false
     }
   },
   methods: {
-    // checkProduction() {
-    //   return process.env.NODE_ENV === 'production'
-    // }
+    checkProduction() {
+      return process.env.NODE_ENV === 'production'
+    },
     async checkLogined() {
       let openId = this.getCookie('openId')
       this.value = openId
@@ -34,7 +34,9 @@ export default {
       } else {
         let res = await wechatAuth.getUserInfo(openId)
         if(res && res.result) {
-          this.xxx = JSON.stringify(res)
+          // this.xxx = JSON.stringify(res.result)
+          this.$store.commit('setUserInfo', res.result)
+          this.routerShow = true
         } else {
           this.toLogin()
         }
@@ -42,7 +44,6 @@ export default {
     },
     toLogin() {
       let state = 'http://www.13idea.com'
-
       window.location.href = "http://www.13idea.com/h5/dice/wechatAuth/login" + "?state=" + state;
     },
     getCookie(name) {
@@ -57,9 +58,6 @@ export default {
           }
       }
       return "";
-    },
-    addCookie(name, value) {
-      document.cookie = `${name}=${value}`;
     }
   }
 }

@@ -3,7 +3,7 @@
     <Dialog :visible.sync="visible" :titleImg="titleImg" :hasSureButton="hasSureButton" @sureCallBack="sureCallBack">
       <div slot="body">
         <div>
-          {{name}}
+          hello {{name}}
         </div>
       </div>
       
@@ -32,7 +32,7 @@ export default {
       this.visible = false
     },
     initUser() {
-      this.name = getCookie('openId') || 'hhh!'
+      this.name = this.$store.state.userInfo ? this.$store.state.userInfo.nickname : 'no'
     }
   },
   created() {
