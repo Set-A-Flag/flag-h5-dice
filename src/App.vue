@@ -1,9 +1,10 @@
 <template>
   <div id="app">
-    <div class="backgroundImg">
+    <div v-if="routerShow" class="backgroundImg">
       <img src="@/assets/beijing.png">
     </div>
-    <router-view />
+    <router-view v-if="routerShow"/>
+    {{hasId}} ang {{xxx}} xxxxxxxx
   </div>
 </template>
 <script>
@@ -12,7 +13,13 @@ import { wechatAuth } from '@/api'
 
 export default {
   created() {
-    // this.checkLogined()
+    this.checkLogined()
+  },
+  data() {
+    return {
+      hasId: 'no',
+      xxx: ''
+    }
   },
   methods: {
     // checkProduction() {
@@ -20,16 +27,17 @@ export default {
     // }
     checkLogined() {
       let openId = getCookie('openId')
-      // let state = window.location.href
       let state = 'http://www.13idea.com'
+
       if(!openId) {
         window.location.href = "http://www.13idea.com/h5/dice/wechatAuth/login" + "?state=" + state;
       } else {
         wechatAuth.getUserInfo(openId).then(res => {
-          alert(res.nickname)
           this.$store.commit('setUserInfo', res)
+          this.hasId = 'yes'
+          this.xxx = JSON.stringify(res)
         })
-        this.logined = true
+        // this.logined = true
       }
     }
   }
