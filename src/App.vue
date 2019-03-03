@@ -4,9 +4,7 @@
       <img src="@/assets/beijing.png">
     </div>
     <router-view v-if="routerShow"/>
-    cookie: {{cookie}}
-    value: {{value}}
-    {{hasId}} ang {{xxx}} xxxxxxxx
+    <div v-for="(item, index) in xxx" :key="item">{{index}} : {{item}}</div>
   </div>
 </template>
 <script>
@@ -35,7 +33,7 @@ export default {
       } else {
         let res = await wechatAuth.getUserInfo(openId)
         if(res && res.result) {
-          this.xxx = res.result
+          this.xxx = res.result.result
         } else {
           this.toLogin()
         }
