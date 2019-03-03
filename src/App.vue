@@ -27,7 +27,7 @@ export default {
     // checkProduction() {
     //   return process.env.NODE_ENV === 'production'
     // }
-    checkLogined() {
+    async checkLogined() {
       let openId = this.getCookie('openId')
       this.value = openId
       let state = 'http://www.13idea.com'
@@ -36,7 +36,7 @@ export default {
         window.location.href = "http://www.13idea.com/h5/dice/wechatAuth/login" + "?state=" + state;
       } else {
         let res = await wechatAuth.getUserInfo(openId)
-        
+
         this.xxx = JSON.stringify(res)
         // this.logined = true
       }
