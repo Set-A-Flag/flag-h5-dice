@@ -17,7 +17,7 @@ export default {
   },
   data() {
     return {
-      hasId: 'no',
+      hasId: '',
       xxx: ''
     }
   },
@@ -30,11 +30,13 @@ export default {
       let state = 'http://www.13idea.com'
 
       if(!openId) {
+        this.hasId = 'no'
         window.location.href = "http://www.13idea.com/h5/dice/wechatAuth/login" + "?state=" + state;
       } else {
+        this.hasId = 'yes'
         wechatAuth.getUserInfo(openId).then(res => {
           this.$store.commit('setUserInfo', res)
-          this.hasId = 'yes'
+          
           this.xxx = JSON.stringify(res)
         })
         // this.logined = true
