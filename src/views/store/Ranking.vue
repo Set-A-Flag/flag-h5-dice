@@ -15,7 +15,7 @@
           <span class="title-item">分数</span>
         </div>
         <div class="content">
-          <div class="rowItem" v-for="(item, index) in mockData" :key="index">
+          <div class="rowItem" v-for="(item, index) in ownerData" :key="index">
             <span class="row-item">{{item.rank}}</span>
             <span class="row-item">{{item.headerImg}}</span>
             <span class="row-item flex2">{{item.name}}</span>
@@ -28,9 +28,26 @@
 </template>
 
 <script>
+import {home} from '@/api'
 export default {
+  data () {
+    return {
+      ownerData: []
+    }
+  },
+  methods: {
+    getownerRank () {
+      home.ownerRank().then(res => {
+        this.dataParse(res.result)
+      })
+    },
+    dataParse (data) {
+      this.ownerData = data
+    }
+  },
   created () {
-    this.mockData = [
+    this.getownerRank()
+    this.ownerData = [
       {
         rank: 1,
         headerImg: 'xxx',

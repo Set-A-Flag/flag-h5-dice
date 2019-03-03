@@ -49,12 +49,11 @@ getToken(params.appid, params.appsecret).then(res1 => {
         });
 
         wx.error(function(res) {
-            alert("出错了：" + res.errMsg);//这个地方的好处就是wx.config配置错误，会弹出窗口哪里错误，然后根据微信文档查询即可。
+            console.log("出错了：" + res.errMsg);//这个地方的好处就是wx.config配置错误，会弹出窗口哪里错误，然后根据微信文档查询即可。
         });
     
         wx.ready(function() {
-            alert("wx-config完成");
-            
+            console.log("wx-config完成");
         });
     })
 })

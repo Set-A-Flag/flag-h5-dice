@@ -7,8 +7,23 @@
 </template>
 
 <script>
+import {home} from '@/api'
 export default {
-
+  data () {
+    return {
+      qrCode: ''
+    }
+  },
+  methods: {
+    getQrCode (account) {
+      home.qrCode(account).then(res => {
+        res && res.result && (this.qrCode = res.result)
+      })
+    }
+  },
+  created () {
+    this.getQrCode({account: 110})
+  }
 }
 </script>
 

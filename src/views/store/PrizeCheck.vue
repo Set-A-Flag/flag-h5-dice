@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import {home}  from '@/api/'
 import wx from 'weixin-js-sdk'
 export default {
   created () {
@@ -146,24 +147,31 @@ export default {
   methods: {
     saoYiSao () {
       const _this = this
-      wx.scanQRCode({
-        needResult : 1,
-        scanType : [ "qrCode", "barCode" ],
-        success : function(res) {
-          console.log(res)
-          alert(JSON.stringify(res))
-          _this.lottery()
-        },
-        fail : function(res) {
-          console.log(res)
-          alert(JSON.stringify(res))
+      home.isMaskSet({account: 110}).then(res => {
+            if (res && res.result !== null) {
+              const prize = res.result ? 'loveBox' : 'none'
+              this.$emit('lottery', prize)
+            }
+          })
+      // wx.scanQRCode({
+      //   needResult : 1,
+      //   scanType : [ "qrCode", "barCode" ],
+      //   success : function(res) {
+      //     console.log(res)
+      //     alert(JSON.stringify(res))
+      //     home.isMaskSet({account: 110}).then(res => {
+      //       if (res && res.result) {
+      //         const prize = res.result ? 'loveBox' : 'none'
+      //         this.$emit('lottery', prize)
+      //       }
+      //     })
+      //   },
+      //   fail : function(res) {
+      //     console.log(res)
+      //     alert(JSON.stringify(res))
   
-        }
-      })
-    },
-    // 扫描二维码抽奖
-    lottery () {
-      this.$emit('lottery')
+      //   }
+      // })
     }
   }
 }

@@ -27,7 +27,7 @@
       <Code slot="body"/>
     </Dialog>
 
-    <SurprisePrize @afterLottery="afterLotteryHandle" :visible.sync="surprisePrizeVisible"/>
+    <SurprisePrize :prize="prize" @afterLottery="afterLotteryHandle" :visible.sync="surprisePrizeVisible"/>
 
     <Dialog :visible.sync="facialMaskVisible" titleImg="static/images/store/activityTitle.png">
       <FacialMask @FacialMaskClick="FacialMaskClickHandle" slot="body"/>
@@ -69,20 +69,23 @@ export default {
       prizeCheckVisible: false,
       surprisePrizeVisible: false,
       facialMaskVisible: false,
-      notWonVisible: false
+      notWonVisible: false,
+      prize: ''
     }
   },
   methods: {
     showDialog (visible) {
       this[visible] = true
     },
-    lotteryHandle () {
+    lotteryHandle (prize) {
+      this.prize = prize
       this.prizeCheckVisible = false
       this.surprisePrizeVisible = true
     },
-    afterLotteryHandle () {
+    afterLotteryHandle (prize) {
       this.surprisePrizeVisible = false
-      this.notWonVisible = true
+      this.facialMaskVisible = prize === 'loveBox'
+      this.notWonVisible = prize === 'none'
     },
     FacialMaskClickHandle () {
       this.facialMaskVisible = false

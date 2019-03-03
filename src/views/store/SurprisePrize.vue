@@ -2,7 +2,7 @@
   <div v-if="visible" class="surprise-prize">
 
     <div class="prize-draw-wrapper">
-      <img class="draw-wrapper-bg" @click="drawPrize" src="/static/images/surprisePrize/LuckDrawBorder1.png" alt="">
+      <img class="draw-wrapper-bg" src="/static/images/surprisePrize/LuckDrawBorder1.png" alt="">
 
       <img v-show="drawIndex % 2 > 0" class="draw-wrapper-box" src="/static/images/surprisePrize/LuckDrawLamp1.png" alt="">
       <img v-show="drawIndex % 2 === 0" class="draw-wrapper-box" src="/static/images/surprisePrize/LuckDrawLamp2.png" alt="">
@@ -13,7 +13,7 @@
         v-for="i in 8"
         :key="i"
         :src="`/static/images/surprisePrize/LuckDrawPrize${i}.png`" alt="">
-      <!-- 抽奖结果果 -->
+      <!-- 抽奖结果 -->
       <img v-show="drawIndex === 0" class="draw-wrapper-result" :src="`/static/images/surprisePrize/${ICON_PRIZE_MAP[prize]}`" alt="">
     </div>
 
@@ -40,7 +40,7 @@ export default {
     // 获得的奖
     prize: {
       type: String,
-      default: 'iphone'
+      default: ''
     }
   },
   components: {
@@ -62,7 +62,7 @@ export default {
         } else {
           this.drawIndex = 0
           this.timer && clearInterval(this.timer)
-          this.$emit('afterLottery')
+          this.$emit('afterLottery', this.prize)
         }
       }, 300)
     },
@@ -72,6 +72,11 @@ export default {
   },
   beforeCreate () {
     this.ICON_PRIZE_MAP = ICON_PRIZE_MAP
+  },
+  watch: {
+    visible (next) {
+      next && this.drawPrize()
+    }
   }
 }
 </script>
