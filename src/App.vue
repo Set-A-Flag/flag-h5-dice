@@ -4,7 +4,8 @@
       <img src="@/assets/beijing.png">
     </div>
     <router-view v-if="routerShow"/>
-    <div v-for="(item, index) in xxx" :key="item">{{index}} : {{item}}</div>
+    <!-- <div v-for="(item, index) in xxx" :key="item">{{index}} : {{item}}</div> -->
+    {{xxx}}
   </div>
 </template>
 <script>
@@ -33,7 +34,7 @@ export default {
       } else {
         let res = await wechatAuth.getUserInfo(openId)
         if(res && res.result) {
-          this.xxx = res.result.result
+          this.xxx = JSON.stringify(res)
         } else {
           this.toLogin()
         }
